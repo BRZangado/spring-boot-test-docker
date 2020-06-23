@@ -1,10 +1,14 @@
-FROM maven:3.5-jdk-8
+FROM adoptopenjdk/openjdk14:alpine-slim
 
-COPY pom.xml /build/
-COPY src /build/src/
-WORKDIR /build/
-RUN mvn package
-FROM openjdk:8-jre-alpine
-WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/docker-boot-intro-0.1.0.jar /app/
-ENTRYPOINT ["java", "-jar", "docker-boot-intro-0.1.0.jar"]
+RUN apk --update --no-cache add nmap nmap-scripts curl wget vim git jq bash bash-completion tcpdump bind-tools nmap-ncat iputils libcap libcap-ng-utils tzdata \
+    && mkdir -p /opt/microservices \
+    && adduser -D -u 1000 usrjava \
+    && chown -R usrjava /opt/ \
+    && setcap cap_net_raw+ep /bin/busybox \
+    && rm -rf /var/cache/apk/* /tmp/*
+WORKDIR /opt/microservices
+EXPOSE 8080
+USER usrjava
+ADD maven/springboot-mysql-docker-compose.jar /opt/microservices/app.jar
+CMD ["-Djava.security.egd=file:/dev/urandom”, “-Xmx1024m”, “-jar”, “app.jar"]
+ENTRYPOINT ["java"]

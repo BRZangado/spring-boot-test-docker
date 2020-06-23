@@ -1,7 +1,0 @@
-/springboot-mysql-docker-compose/src/main/java/com/platformbuilders/model/User.java
-/springboot-mysql-docker-compose/src/main/java/com/platformbuilders/exception/UserExceptions.java
-/springboot-mysql-docker-compose/src/main/java/com/platformbuilders/Application.java
-/springboot-mysql-docker-compose/src/main/java/com/platformbuilders/config/SwaggerConfig.java
-/springboot-mysql-docker-compose/src/main/java/com/platformbuilders/controller/UserController.java
-/springboot-mysql-docker-compose/src/main/java/com/platformbuilders/repository/UserRepository.java
-/springboot-mysql-docker-compose/src/main/java/com/platformbuilders/service/UserService.java
