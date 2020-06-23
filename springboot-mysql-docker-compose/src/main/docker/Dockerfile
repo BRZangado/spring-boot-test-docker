@@ -10,5 +10,5 @@ WORKDIR /opt/microservices
 EXPOSE 8080
 USER usrjava
 ADD maven/springboot-mysql-docker-compose.jar /opt/microservices/app.jar
-CMD ["-Djava.security.egd=file:/dev/urandom”, “-Xmx1024m”, “-jar”, “app.jar"]
+CMD ["-Djava.security.egd=file:/dev/urandom", "-Xmx1024m", "-jar", "app.jar"]
 ENTRYPOINT ["java"]
